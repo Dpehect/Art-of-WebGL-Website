@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Art of WebGL Website | Yunus Emre G&uuml;rlek</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A static WebGL session gallery by Yunus Emre G&uuml;rlek / SoftBridge Solutions.">
+    <link rel="stylesheet" href="./common/style.css">
+    <style>
+      body {
+        position: static;
+        min-height: 100%;
+        height: auto;
+        background: #080b0f;
+        color: #f7fbff;
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 96px 0 48px;
+      }
+
+      .intro {
+        max-width: 760px;
+        margin-bottom: 34px;
+      }
+
+      .intro h1 {
+        margin: 0 0 12px;
+        font-size: clamp(34px, 7vw, 72px);
+        line-height: 0.95;
+        font-weight: 760;
+        letter-spacing: 0;
+      }
+
+      .intro p {
+        margin: 0;
+        color: rgba(247, 251, 255, 0.72);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 14px;
+      }
+
+      .gallery a {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 6px;
+        background: #111923;
+        color: #fff;
+        text-decoration: none;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.26);
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform 260ms ease, filter 260ms ease;
+      }
+
+      .gallery span {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        padding: 6px 8px;
+        border-radius: 4px;
+        background: rgba(4, 8, 12, 0.72);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .gallery a:hover img {
+        transform: scale(1.045);
+        filter: saturate(1.12) contrast(1.05);
+      }
+
+      @media (max-width: 700px) {
+        main {
+          width: min(100% - 24px, 520px);
+          padding-top: 74px;
+        }
+
+        .intro h1 {
+          font-size: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="intro">
+        <h1>Art of WebGL Website</h1>
+        <p>
+          A static gallery of real-time WebGL rendering sessions, organized as independent shader,
+          geometry, framebuffer, and post-processing studies.
+        </p>
+      </section>
+      <section class="gallery" aria-label="WebGL sessions">
+        <a href="./024/"><img src="./024/thumb.jpg" alt="Session 024"><span>024</span></a>
+        <a href="./023/"><img src="./023/thumb.jpg" alt="Session 023"><span>023</span></a>
+        <a href="./022/"><img src="./022/thumb.jpg" alt="Session 022"><span>022</span></a>
+        <a href="./021/"><img src="./021/thumb.jpg" alt="Session 021"><span>021</span></a>
+        <a href="./020/"><img src="./020/thumb.jpg" alt="Session 020"><span>020</span></a>
+        <a href="./019/"><img src="./019/thumb.jpg" alt="Session 019"><span>019</span></a>
+        <a href="./018/"><img src="./018/thumb.jpg" alt="Session 018"><span>018</span></a>
+        <a href="./017/"><img src="./017/thumb.jpg" alt="Session 017"><span>017</span></a>
+        <a href="./016/"><img src="./016/thumb.jpg" alt="Session 016"><span>016</span></a>
+        <a href="./015/"><img src="./015/thumb.jpg" alt="Session 015"><span>015</span></a>
+        <a href="./014/"><img src="./014/thumb.jpg" alt="Session 014"><span>014</span></a>
+        <a href="./013/"><img src="./013/thumb.jpg" alt="Session 013"><span>013</span></a>
+        <a href="./012/"><img src="./012/thumb.jpg" alt="Session 012"><span>012</span></a>
+        <a href="./011/"><img src="./011/thumb.jpg" alt="Session 011"><span>011</span></a>
+        <a href="./010/"><img src="./010/thumb.jpg" alt="Session 010"><span>010</span></a>
+        <a href="./009/"><img src="./009/thumb.jpg" alt="Session 009"><span>009</span></a>
+        <a href="./008/"><img src="./008/thumb.jpg" alt="Session 008"><span>008</span></a>
+        <a href="./007/"><img src="./007/thumb.jpg" alt="Session 007"><span>007</span></a>
+        <a href="./006/"><img src="./006/thumb.jpg" alt="Session 006"><span>006</span></a>
+        <a href="./005/"><img src="./005/thumb.jpg" alt="Session 005"><span>005</span></a>
+        <a href="./004/"><img src="./004/thumb.jpg" alt="Session 004"><span>004</span></a>
+        <a href="./003/"><img src="./003/thumb.jpg" alt="Session 003"><span>003</span></a>
+        <a href="./002/"><img src="./002/thumb.jpg" alt="Session 002"><span>002</span></a>
+        <a href="./001/"><img src="./001/thumb.jpg" alt="Session 001"><span>001</span></a>
+      </section>
+    </main>
+  </body>
+</html>

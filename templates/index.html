@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Session <%- sessionNumber %> - <%- name %> | Yunus Emre G&uuml;rlek</title>
+    <link rel='stylesheet' href='../common/style.css' charset='utf-8'>
+    <meta property="og:image" content="https://dpehect.github.io/Art-of-WebGL-Website/<%- sessionNumber %>/image.jpg" />
+    <meta property="og:description" content="<%- name %>" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://dpehect.github.io/Art-of-WebGL-Website/<%- sessionNumber %>/image.jpg">
+    <meta name="twitter:title" content="Session <%- sessionNumber %>">
+    <meta name="twitter:description" content="<%- name %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div class='title'>
+      <%= previous %>
+      <div>
+        <h1>Session <%- sessionNumber %></h1>
+        <h2><%- name %></h2>
+      </div>
+      <%= next %>
+    </div>
+    <!-- Project repository: github.com/Dpehect/Art-of-WebGL-Website/ -->
+    <script src='bundle.js'></script>
+  </body>
+</html>

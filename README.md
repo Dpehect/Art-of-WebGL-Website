@@ -35,6 +35,18 @@ http://127.0.0.1:3000/
 http://127.0.0.1:3000/024/
 ```
 
+## Vercel Deployment
+
+This repository is configured for Vercel as a static site. The deployment should use the repository root as the output directory and skip dependency installation/build steps because the session bundles are already committed.
+
+The included `vercel.json` sets:
+
+- Framework Preset: Other
+- Install Command: skipped
+- Build Command: skipped
+- Output Directory: `.`
+- Trailing Slash: enabled, so `/024` redirects to `/024/`
+
 ## Build Notes
 
 The committed `bundle.js` files are enough for normal viewing. Rebuilding an individual session uses the legacy Browserify workflow:

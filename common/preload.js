@@ -129,23 +129,23 @@
     })
   }
 
-  function drawTextLine (text, y, fontSize, weight, fillAlpha, strokeAlpha) {
+  function drawTextLine (text, y, fontSize, weight, fillAlpha, strokeAlpha, clean) {
     context.font = weight + ' ' + fontSize + 'px "Segoe UI", Arial, sans-serif'
     context.lineWidth = Math.max(2.5, fontSize * 0.075)
     context.lineJoin = 'round'
-    context.shadowBlur = 18
-    context.shadowColor = 'rgba(0, 0, 0, 0.68)'
+    context.shadowBlur = clean ? 0 : 18
+    context.shadowColor = clean ? 'transparent' : 'rgba(0, 0, 0, 0.68)'
     context.strokeStyle = 'rgba(1, 7, 11, ' + strokeAlpha + ')'
     context.strokeText(text, width / 2, y)
 
-    context.shadowBlur = 30
-    context.shadowColor = 'rgba(109, 211, 255, ' + (fillAlpha * 0.52) + ')'
+    context.shadowBlur = clean ? 14 : 30
+    context.shadowColor = 'rgba(109, 211, 255, ' + (fillAlpha * (clean ? 0.24 : 0.52)) + ')'
     context.fillStyle = 'rgba(255, 255, 255, ' + fillAlpha + ')'
     context.fillText(text, width / 2, y)
 
-    context.shadowBlur = 10
-    context.shadowColor = 'rgba(150, 242, 255, ' + (fillAlpha * 0.38) + ')'
-    context.fillStyle = 'rgba(169, 246, 255, ' + (fillAlpha * 0.22) + ')'
+    context.shadowBlur = clean ? 0 : 10
+    context.shadowColor = clean ? 'transparent' : 'rgba(150, 242, 255, ' + (fillAlpha * 0.38) + ')'
+    context.fillStyle = 'rgba(169, 246, 255, ' + (fillAlpha * (clean ? 0.16 : 0.22)) + ')'
     context.fillText(text, width / 2, y)
   }
 
@@ -160,10 +160,10 @@
     context.textAlign = 'center'
     context.textBaseline = 'alphabetic'
     for (var i = 0; i < textLayout.brandLines.length; i++) {
-      drawTextLine(textLayout.brandLines[i], textLayout.brandStartY + i * textLayout.brandLineHeight, textLayout.brandSize, '850', alpha, strokeAlpha)
+      drawTextLine(textLayout.brandLines[i], textLayout.brandStartY + i * textLayout.brandLineHeight, textLayout.brandSize, '850', alpha, strokeAlpha, false)
     }
 
-    drawTextLine('Yunus Emre G\u00fcrlek', textLayout.bylineY, textLayout.bylineSize, '650', alpha * 0.88, strokeAlpha * 0.78)
+    drawTextLine('Yunus Emre G\u00fcrlek', textLayout.bylineY, textLayout.bylineSize, '650', alpha * 0.92, strokeAlpha * 0.72, true)
     context.restore()
   }
 

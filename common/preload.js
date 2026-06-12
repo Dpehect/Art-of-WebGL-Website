@@ -39,7 +39,7 @@
     var sampleGap = width < 520 ? 3 : 4
     var brandLines = width < 560 ? ['SoftBridge', 'Solutions'] : ['SoftBridge Solutions']
     var brandSize = width < 560 ? clamp(width * 0.108, 34, 46) : clamp(width * 0.064, 52, 82)
-    var bylineSize = width < 560 ? clamp(width * 0.044, 15, 19) : clamp(width * 0.018, 18, 24)
+    var bylineSize = width < 560 ? clamp(width * 0.052, 17, 22) : clamp(width * 0.022, 22, 28)
     var brandLineHeight = brandSize * 1.08
     var gap = bylineSize * 1.35
     var blockHeight = brandLines.length * brandLineHeight + gap + bylineSize
@@ -129,27 +129,41 @@
     })
   }
 
+  function drawTextLine (text, y, fontSize, weight, fillAlpha, strokeAlpha) {
+    context.font = weight + ' ' + fontSize + 'px "Segoe UI", Arial, sans-serif'
+    context.lineWidth = Math.max(2.5, fontSize * 0.075)
+    context.lineJoin = 'round'
+    context.shadowBlur = 18
+    context.shadowColor = 'rgba(0, 0, 0, 0.68)'
+    context.strokeStyle = 'rgba(1, 7, 11, ' + strokeAlpha + ')'
+    context.strokeText(text, width / 2, y)
+
+    context.shadowBlur = 30
+    context.shadowColor = 'rgba(109, 211, 255, ' + (fillAlpha * 0.52) + ')'
+    context.fillStyle = 'rgba(255, 255, 255, ' + fillAlpha + ')'
+    context.fillText(text, width / 2, y)
+
+    context.shadowBlur = 10
+    context.shadowColor = 'rgba(150, 242, 255, ' + (fillAlpha * 0.38) + ')'
+    context.fillStyle = 'rgba(169, 246, 255, ' + (fillAlpha * 0.22) + ')'
+    context.fillText(text, width / 2, y)
+  }
+
   function drawFinalText (progress) {
-    if (!textLayout || progress < 0.68) {
+    if (!textLayout || progress < 0.52) {
       return
     }
 
-    var alpha = Math.min(0.42, (progress - 0.68) / 0.32 * 0.42)
+    var alpha = Math.min(0.92, (progress - 0.52) / 0.3 * 0.92)
+    var strokeAlpha = Math.min(0.86, alpha * 0.94)
     context.save()
     context.textAlign = 'center'
     context.textBaseline = 'alphabetic'
-    context.shadowBlur = 26
-    context.shadowColor = 'rgba(109, 211, 255, 0.42)'
-    context.fillStyle = 'rgba(255, 255, 255, ' + alpha + ')'
-    context.font = '800 ' + textLayout.brandSize + 'px "Segoe UI", Arial, sans-serif'
     for (var i = 0; i < textLayout.brandLines.length; i++) {
-      context.fillText(textLayout.brandLines[i], width / 2, textLayout.brandStartY + i * textLayout.brandLineHeight)
+      drawTextLine(textLayout.brandLines[i], textLayout.brandStartY + i * textLayout.brandLineHeight, textLayout.brandSize, '850', alpha, strokeAlpha)
     }
 
-    context.shadowBlur = 16
-    context.fillStyle = 'rgba(216, 246, 255, ' + (alpha * 0.92) + ')'
-    context.font = '500 ' + textLayout.bylineSize + 'px "Segoe UI", Arial, sans-serif'
-    context.fillText('Yunus Emre G\u00fcrlek', width / 2, textLayout.bylineY)
+    drawTextLine('Yunus Emre G\u00fcrlek', textLayout.bylineY, textLayout.bylineSize, '650', alpha * 0.88, strokeAlpha * 0.78)
     context.restore()
   }
 

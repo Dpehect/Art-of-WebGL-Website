@@ -1,5 +1,6 @@
 # Art-of-WebGL-Website
 Live Link = https://lnkd.in/dUWVzAHA
+
 Art-of-WebGL-Website is a static WebGL gallery that collects shader-driven visual sessions into a direct, browsable archive. The project is organized as independent rendering experiments: each numbered folder contains its own HTML entry point, generated JavaScript bundle, image assets, and session-specific scene code.
 
 This version is maintained as a branded presentation by Yunus Emre Gürlek / SoftBridge Solutions. It keeps the original session imagery and static delivery model while adding a more polished project identity and GitHub Pages friendly structure.

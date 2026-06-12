@@ -32,6 +32,145 @@ body::before {
   pointer-events: none;
 }
 
+.softbridge-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #f7fbff;
+  background:
+    linear-gradient(135deg, rgba(4, 8, 12, 0.98), rgba(9, 18, 25, 0.96) 48%, rgba(2, 8, 10, 0.98)),
+    #05090d;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 520ms ease, visibility 520ms ease;
+}
+
+.softbridge-preloader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent, rgba(109, 211, 255, 0.12), transparent),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0, rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 7px);
+  transform: translateX(-100%);
+  animation: preload-scan 1600ms ease-in-out infinite;
+}
+
+.softbridge-preloader::after {
+  content: "";
+  position: absolute;
+  width: min(82vw, 560px);
+  height: min(82vw, 560px);
+  border: 1px solid rgba(109, 211, 255, 0.18);
+  border-radius: 50%;
+  box-shadow: inset 0 0 70px rgba(109, 211, 255, 0.05), 0 0 80px rgba(109, 211, 255, 0.08);
+  animation: preload-ring 2200ms ease-in-out infinite;
+}
+
+.softbridge-preloader.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.softbridge-preloader__panel {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  width: min(86vw, 520px);
+  padding: 34px 28px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-left: 3px solid rgba(109, 211, 255, 0.95);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(13, 20, 29, 0.74), rgba(20, 35, 44, 0.46));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px) saturate(135%);
+  text-align: center;
+}
+
+.softbridge-preloader__line {
+  width: min(260px, 64vw);
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.softbridge-preloader__line::before {
+  content: "";
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, rgba(109, 211, 255, 1), rgba(255, 255, 255, 0.9), transparent);
+  animation: preload-line 1100ms ease-in-out infinite;
+}
+
+.softbridge-preloader__brand {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 760;
+  line-height: 1.04;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 0 24px rgba(109, 211, 255, 0.22);
+}
+
+.softbridge-preloader__byline {
+  margin: 0;
+  color: rgba(247, 251, 255, 0.76);
+  font-size: clamp(14px, 2.6vw, 17px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+@keyframes preload-scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  52%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes preload-ring {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.52;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.82;
+  }
+}
+
+@keyframes preload-line {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .softbridge-preloader,
+  .softbridge-preloader::before,
+  .softbridge-preloader::after,
+  .softbridge-preloader__line::before {
+    animation: none;
+    transition-duration: 160ms;
+  }
+}
+
 .title {
   position: absolute;
   bottom: 0.3em;
@@ -90,6 +229,20 @@ body::before {
     font-size: 10px;
     letter-spacing: 0.06em;
     padding: 9px 11px 8px;
+  }
+
+  .softbridge-preloader__panel {
+    width: min(86vw, 360px);
+    padding: 28px 20px 24px;
+  }
+
+  .softbridge-preloader__brand {
+    font-size: 25px;
+    line-height: 1.08;
+  }
+
+  .softbridge-preloader__byline {
+    font-size: 14px;
   }
 
   .title {

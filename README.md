@@ -22,41 +22,6 @@ The repository is useful as a technical reference for browser graphics experimen
 - There is no runtime server logic. The only server requirement during development is an HTTP file server so browser security rules can load scripts, textures, and relative assets consistently.
 - The visual layer is intentionally session-local. Shared helpers live in `common`, but each numbered folder keeps its own scene orchestration, object setup, simulation state, and draw loop.
 
-## Local Run
-
-```powershell
-npx --yes http-server . -p 3000 -a 127.0.0.1 -c-1
-```
-
-Then open:
-
-```text
-http://127.0.0.1:3000/
-http://127.0.0.1:3000/024/
-```
-
-## Vercel Deployment
-
-This repository is configured for Vercel as a static site. The deployment should use the repository root as the output directory and skip dependency installation/build steps because the session bundles are already committed.
-
-The included `vercel.json` sets:
-
-- Framework Preset: Other
-- Install Command: skipped
-- Build Command: skipped
-- Output Directory: `.`
-- Trailing Slash: enabled, so `/024` redirects to `/024/`
-
-## Build Notes
-
-The committed `bundle.js` files are enough for normal viewing. Rebuilding an individual session uses the legacy Browserify workflow:
-
-```powershell
-npm install
-npm run build -- 024
-```
-
-Because the dependency tree belongs to an older WebGL/Browserify toolchain, static viewing is the most stable path on modern Node versions. Rebuilds may require compatibility work depending on the local Node runtime.
 
 ## Session Gallery
 

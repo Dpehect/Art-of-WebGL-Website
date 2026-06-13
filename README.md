@@ -1,5 +1,5 @@
 # Art-of-WebGL-Website
-Live Link = [[https://lnkd.in/dUWVzAHA](https://art-of-web-gl-website.vercel.app/)](https://art-of-web-gl-website.vercel.app/)
+Live Link = https://art-of-web-gl-website.vercel.app/
 
 Art-of-WebGL-Website is a static WebGL gallery that collects shader-driven visual sessions into a direct, browsable archive. The project is organized as independent rendering experiments: each numbered folder contains its own HTML entry point, generated JavaScript bundle, image assets, and session-specific scene code.
 
